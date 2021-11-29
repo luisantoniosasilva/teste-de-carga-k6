@@ -1,0 +1,23 @@
+{
+  "name": "teste-de-carga-k6",
+  "version": "1.0.0",
+  "description": "## O que é teste de carga?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisantoniosasilva/teste-de-carga-k6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisantoniosasilva/teste-de-carga-k6/issues"
+  },
+  "homepage": "https://github.com/luisantoniosasilva/teste-de-carga-k6#readme",
+  "dependencies": {
+    "k6": "^0.0.0"
+  }
+}
