@@ -2,13 +2,13 @@ import http from 'k6/http';
 import { check, sleep, group } from 'k6';
 import { Trend, Rate, Counter } from 'k6/metrics';
 
-// export let options = {
-//     stages: [
-//         { duration: '10s', target: 20 }, // Primeiros 10s sobe o pico para 20 vus
-//         { duration: '20s', target: 10 }, // Após 10s os próximos 20s irá descer para 10 vus
-//         { duration: '10s', target: 0 }, // Após 30s os próximos 10s descerá para 0 vus
-//     ],
-// };
+export let options = {
+    stages: [
+        { duration: '10s', target: 20 }, // Primeiros 10s sobe o pico para 20 vus
+        { duration: '20s', target: 10 }, // Após 10s os próximos 20s irá descer para 10 vus
+        { duration: '10s', target: 0 }, // Após 30s os próximos 10s descerá para 0 vus
+    ],
+};
 
 const mySuccessRate = new Rate('success requests');
 
