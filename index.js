@@ -15,68 +15,65 @@ const mySuccessRate = new Rate('success requests');
 const URL = 'https://reqres.in/api';
 const EMAIL = "eve.holt@reqres.in";
 const PASSWORD = "cityslicka";
-const data = JSON.parse(open('./data/user.json'));
+// const data = JSON.parse(open('./data/user.json'));
 
 
 export default function () {
 
-    // group('POST - Login successfully', () => {      
+    group('POST - Login successfully', () => {      
         
-    //     const url = `${URL}/login`
-    //     const params = {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     };
+        const url = `${URL}/login`
+        const params = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
         
-    //     const payload = JSON.stringify({
-    //         email: EMAIL,
-    //         password: PASSWORD
-    //     })
+        const payload = JSON.stringify({
+            email: EMAIL,
+            password: PASSWORD
+        })
         
-    //     let res = http.post(url, payload, params);
-    //     console.log(res.body)
+        let res = http.post(url, payload, params);
+        console.log(res.body)
 
-    //     check(res, {
-    //         'is status 200': (r) => r.status === 200,
-    //         "logged successfully": (r) => r.json("token") !== ''
-    //     })
+        check(res, {
+            'is status 200': (r) => r.status === 200,
+            "logged successfully": (r) => r.json("token") !== ''
+        })
 
-    // })
+    })
 
-    // group('GET - Single user', () => {
-    //     let res = http.get(`${URL}/users/2`);
+    group('GET - Single user', () => {
+        let res = http.get(`${URL}/users/2`);
 
-    //     check(res, {
-    //         'is status 200': (r) => r.status === 200,
-    //         'verify text': (r) => r.body.includes('To keep ReqRes free, contributions towards server costs are appreciated!')
-    //     });
+        check(res, {
+            'is status 200': (r) => r.status === 200,
+            'verify text': (r) => r.body.includes('To keep ReqRes free, contributions towards server costs are appreciated!')
+        });
 
-    //     mySuccessRate.add(res.status == 200);
-    //     sleep(1);
-    // });
+        mySuccessRate.add(res.status == 200);
+        sleep(1);
+    });
 
-    // group('GET - All users', () => {
-    //     let res = http.get(`${URL}/users?page=2`);
+    group('GET - All users', () => {
+        let res = http.get(`${URL}/users?page=2`);
 
-    //     check(res, {
-    //         'is status 200': (r) => r.status === 200
-    //     });
+        check(res, {
+            'is status 200': (r) => r.status === 200
+        });
 
-    //     sleep(1);
-    // });
+        sleep(1);
+    });
 
     group('POST - Create user', () => {
 
         const url = `${URL}/users`;
 
         const payload = JSON.stringify({
-            data
+            name: 'morpheus',
+            job: 'leader'
         });
-
-        for (var car of data) {
-            console.log(data);
-        }
 
         const params = {
             headers: {
