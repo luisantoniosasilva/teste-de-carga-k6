@@ -1,9 +1,9 @@
 import http from 'k6/http';
 import { CommonOptions } from "../options/commonOptions.js";
 
-export class LoginRequester {
+export class RegisterRequester {
 
-    loginRequester(email, password) {
+    registerRequester(email, password) {
 
         const data = JSON.stringify({
             email: email,
@@ -14,7 +14,7 @@ export class LoginRequester {
             headers: { 'Content-Type': 'application/json' }
         };
 
-        let res = http.post(CommonOptions.url + '/api/login', data, params);
+        let res = http.post(CommonOptions.url + '/api/register', data, params);
 
         return res;
     }
