@@ -1,5 +1,6 @@
 // __ENV
 
-export const commonOptions = {
-    url: 'https://httpbin.org/get'
+let commonOptions = {
+    url: 'https://reqres.in'
 }
+export const CommonOptions = commonOptions;

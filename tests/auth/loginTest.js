@@ -1,17 +1,27 @@
-import http from 'k6/http';
-import {check, sleep} from 'k6';
-import { CommonOptions } from "./options/commonOptions.js";
+import { check, group } from 'k6';
+import { LoginRequester } from '../routes/loginRequest.js';
 
-export default function() {
-  /* const data = {username: 'username', password: 'password'};
-  let res = http.post('https://myapi.com/login/', data);
-    check(res, { 'success login': (r) => r.status === 200 });
-    sleep(0.3); */
+const loginRequester = new LoginRequester();
 
-    const URL = CommonOptions.url;
+export default function () {
+
     group('login', () => {
-        group ('login successful', () => {
-            console.log(URL)
+        group('login successful', () => {
+            let res = loginRequester.loginRequester('eve.holt@reqres.in', 'cityslicka');
+            console.log(JSON.stringify(res.body));
+            check(res, {
+                'success login': (r) => r.status === 200,
+                'missing mandatory parameters': (r) => r.body.includes('token')
+            });
+        })
+
+        group('login unsuccessful', () => {
+            let res = loginRequester.loginRequester('eve.holt@reqres.in');
+            console.log(JSON.stringify(res.body));
+            check(res, {
+                'unsuccess login': (r) => r.status === 400,
+                'missing mandatory parameters': (r) => r.body.includes('Missing password')
+            });
         })
     })
 }
