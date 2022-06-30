@@ -10,7 +10,7 @@ export default function () {
             let res = loginRequester.loginRequester('eve.holt@reqres.in', 'cityslicka');
             check(res, {
                 'success login': (r) => r.status === 200,
-                'missing mandatory parameters': (r) => r.body.includes('token')
+                'mandatory parameters': (r) => r.body.includes('token')
             });
         })
 

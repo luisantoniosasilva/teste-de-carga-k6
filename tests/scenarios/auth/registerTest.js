@@ -10,7 +10,7 @@ export default function () {
             let res = registerRequester.registerRequester('eve.holt@reqres.in', 'cityslicka');
             check(res, {
                 'success register': (r) => r.status === 200,
-                'missing mandatory parameters': (r) => r.body.includes('id')
+                'mandatory parameters': (r) => r.body.includes('id')
             });
         })
 

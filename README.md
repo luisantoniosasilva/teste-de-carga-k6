@@ -15,3 +15,15 @@ npm install
 ```bash
 k6 run index.js
 ```
+
+## 🗂 Organização do projeto
+
+```
+├── data (Massa de dados)
+├── tests
+│   ├── options (Arquivos de configurações. Ex: Arquivo de variável de ambiente)
+│   ├── routes (Rotas utilizadas nos testes)
+│   ├── scenarios (Cenários de testes)
+|   |   ├── auth
+|   |   ├── user
+```
