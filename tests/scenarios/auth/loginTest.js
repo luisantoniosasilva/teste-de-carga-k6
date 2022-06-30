@@ -1,5 +1,5 @@
 import { check, group } from 'k6';
-import { LoginRequester } from '../routes/loginRequest.js';
+import { LoginRequester } from '../../routes/loginRequest.js';
 
 const loginRequester = new LoginRequester();
 
