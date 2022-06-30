@@ -30,7 +30,7 @@ k6 run index.js
 |   |   ├── user
 ```
 
-## Exemplo de criação de um teste
+## 🏋🏽 Exemplo de criação de um teste
 
 1) Dentro da pasta routes criamos um arquivo chamado `NomeDaRota + Request.js`, exemplo createUserRequest.js
 2) Dentro deste arquivo criamos uma classe que irá conter nossa requisição
