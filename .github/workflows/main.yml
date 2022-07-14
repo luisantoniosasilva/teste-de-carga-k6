@@ -13,14 +13,12 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install k6 by homebrew
-        run: brew install k6
-
-      - name: Install Node.js dependencies
-        run: npm install
+        run: |
+          brew install k6
+          npm install
    
   running_teste_de_carga_k6:
     needs: [teste_de_carga_k6]
-    name: Performance test
     runs-on: macos-latest
 
     steps:
