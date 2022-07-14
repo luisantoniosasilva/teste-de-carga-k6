@@ -17,12 +17,14 @@ jobs:
           brew install k6
           npm install
 
-      - name: Performance test
-        run: |
-          k6 run ./tests/scenarios/auth/loginTest.js
-          k6 run ./tests/scenarios/auth/registerTest.js
-          k6 run ./tests/scenarios/user/userTest.js
-    
+      - name: login performance test
+        run: k6 run ./tests/scenarios/auth/loginTest.js
+        
+      - name: register performance test
+        run: k6 run ./tests/scenarios/auth/registerTest.js
+          
+      - name: user performance test
+        run: k6 run ./tests/scenarios/user/userTest.js
     
   
   
