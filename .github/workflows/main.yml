@@ -11,7 +11,7 @@ jobs:
     
     steps:
       - name: Install k6
-        run: sudo apt-get install k6
+        run: apt-get install k6
 
       - name: k6 run
         run: k6 run ./tests/scenarios/auth/loginTest.js
