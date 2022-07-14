@@ -16,17 +16,12 @@ jobs:
         run: |
           brew install k6
           npm install
-   
-  running_teste_de_carga_k6:
-    needs: [teste_de_carga_k6]
-    runs-on: macos-latest
 
-    steps:
-      - name: login performance test
-        run: k6 run ./tests/scenarios/auth/loginTest.js
-        
-      - name: register performance test
-        run: k6 run ./tests/scenarios/auth/registerTest.js
+      - name: Performance test
+        run: |
+          k6 run ./tests/scenarios/auth/loginTest.js
+          k6 run ./tests/scenarios/auth/registerTest.js
+          k6 run ./tests/scenarios/user/userTest.js
     
     
   
