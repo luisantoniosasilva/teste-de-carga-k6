@@ -7,20 +7,17 @@ on:
 jobs:
   teste_de_carga_k6:
     name: Perfomance test
-    runs-on: ubuntu-latest
-    
+    runs-on: macos-latest
+
     steps:
-      - name: Install k6 1 
-        run: sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-        
-      - name: Install k6 2
-        run: echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
-        
-      - name: Install k6 3
-        run: sudo apt-get update
-        
-      - name: Install k6
-        run: sudo apt-get install k6
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install k6 by homebrew
+        run: brew install k6
+
+      - name: Install Node.js dependencies
+        run: npm install
 
       - name: k6 run
         run: k6 run ./tests/scenarios/auth/loginTest.js
