@@ -1,18 +1,21 @@
-- name: k6 Load Test
-  # You may pin to the exact commit or the version.
-  # uses: grafana/k6-action@55845c6c2e400af4356c84e5b514aeabb1bfdbd4
-  uses: grafana/k6-action@v0.2.0
-  with:
-    # To run in the k6 cloud, provide your k6 cloud token as a secret to the input `token`.
-Dont have a k6 account yet? Go to https://k6.io/cloud and activate your free trial.
+name: k6 performance test
 
-    cloud: # optional
-    # k6 Cloud Token. Only required for using the cloud service.
+on:
+  push:
+    branches: [ main ]
 
-    token: # optional, default is 
-    # Path to the test script to execute, relative to the workspace.
+jobs:
+  teste_de_carga_k6:
+    name: Perfomance test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install k6
+        run: sudo apt-get install k6
 
-    filename: # default is test.js
-    # Additional argument and flags to provide to the k6 CLI. See https://k6.io/docs/using-k6/options for details.
-
-    flags: # optional, default is 
+      - name: k6 run
+        run: k6 run ./tests/scenarios/auth/loginTest.js
+    
+    
+  
+  
