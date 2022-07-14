@@ -19,8 +19,11 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: k6 run
+      - name: login performance test
         run: k6 run ./tests/scenarios/auth/loginTest.js
+        
+      - name: register performance test
+        run: k6 run ./tests/scenarios/auth/registerTest.js
     
     
   
