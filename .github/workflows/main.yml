@@ -6,7 +6,6 @@ on:
 
 jobs:
   teste_de_carga_k6:
-    name: Setting up performance test
     runs-on: macos-latest
 
     steps:
@@ -20,6 +19,7 @@ jobs:
         run: npm install
    
   running_teste_de_carga_k6:
+    needs: [teste_de_carga_k6]
     name: Performance test
     runs-on: macos-latest
 
