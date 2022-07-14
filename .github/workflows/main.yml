@@ -6,7 +6,7 @@ on:
 
 jobs:
   teste_de_carga_k6:
-    name: Perfomance test
+    name: Setting up performance test
     runs-on: macos-latest
 
     steps:
@@ -18,7 +18,12 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm install
+   
+  running_teste_de_carga_k6:
+    name: Performance test
+    runs-on: macos-latest
 
+    steps:
       - name: login performance test
         run: k6 run ./tests/scenarios/auth/loginTest.js
         
