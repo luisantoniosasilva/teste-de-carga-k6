@@ -21,16 +21,16 @@ k6 run index.js
 ## 🗂 Organização do projeto
 
 ```
-├── data (Massa de dados)
+├── data                       # Massa de dados
 ├── tests
-│   ├── options (Arquivos de configurações. Ex: Arquivo de variável de ambiente)
-│   ├── routes (Rotas utilizadas nos testes)
-│   ├── scenarios (Cenários de testes)
+│   ├── options                # Arquivos de configurações. Ex: Arquivo de variável de ambiente
+│   ├── routes                 # Rotas utilizadas nos testes
+│   ├── scenarios              # Cenários de testes
 |   |   ├── auth
 |   |   ├── user
 ```
 
-## Exemplo de criação de um teste
+## 🏋🏽 Exemplo de criação de um teste
 
 1) Dentro da pasta routes criamos um arquivo chamado `NomeDaRota + Request.js`, exemplo createUserRequest.js
 2) Dentro deste arquivo criamos uma classe que irá conter nossa requisição

@@ -1,0 +1,30 @@
+name: k6 performance test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  teste_de_carga_k6:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install k6 by homebrew
+        run: |
+          brew install k6
+          npm install
+
+      - name: login performance test
+        run: k6 run ./tests/scenarios/auth/loginTest.js
+        
+      - name: register performance test
+        run: k6 run ./tests/scenarios/auth/registerTest.js
+          
+      - name: user performance test
+        run: k6 run ./tests/scenarios/user/userTest.js
+    
+  
+  
