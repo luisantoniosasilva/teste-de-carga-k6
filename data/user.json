@@ -1,11 +1,10 @@
-{
-    "user": [
-        {
-            "name": "morpheus",
-            "job": "leader"
-        },
-        {
-            "name": "Luis"
-        }
-    ]
-}
+[
+    {
+        "nome": "Maria",
+        "job": "leader"
+    },
+    {
+        "nome": "Luis",
+        "job": "QA"
+    }
+]

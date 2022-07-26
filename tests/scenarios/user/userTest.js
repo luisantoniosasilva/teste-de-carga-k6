@@ -1,25 +1,30 @@
 import { check, group } from 'k6';
 import { CreateUserRequester } from '../../routes/createUserRequest.js';
+import { SharedArray } from 'k6/data';
 
 const createUserRequester = new CreateUserRequester();
 
-export default function () {
+const users = new SharedArray('users', function () {
+    const users = JSON.parse(open('../../../data/user.json'));
+    return users;
+});
 
-    const USERS = [
-        {nome: 'Maria', job: 'leader'}, 
-        {nome: 'Luis', job: 'QA'}
-    ]
+export default function () {
 
     group('user', () => {
         group('create user successful', () => {
-            USERS.forEach(function(user, i) {
-                let res = createUserRequester.createUserRequester(user.nome, user.job);
-                check(res, {
-                    'success login': (r) => r.status === 201,
-                    'mandatory parameters': (r) => r.body.includes('id'),
-                    'created successful': (r) => r.body.includes(user.nome, user.job)
-                });
-            })
+            let nome = users[Math.floor(Math.random() * users.length)].nome
+            let job = users[Math.floor(Math.random() * users.length)].job
+
+            console.log(nome, job)
+
+            let res = createUserRequester.createUserRequester(nome, job);
+
+            check(res, {
+                'success login': (r) => r.status === 201,
+                'mandatory parameters': (r) => r.body.includes('id'),
+                'created successful': (r) => r.body.includes(nome, job)
+            });
         })
     })
 }
